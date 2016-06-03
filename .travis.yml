@@ -1,7 +1,11 @@
 language: python
 python:
   - "2.7"
+before_install:
+  - sudo apt-get -qq update && sudo apt-get install -y --no-install-recommends texlive-fonts-recommended texlive-latex-extra texlive-fonts-extra dvipng texlive-latex-recommended texlive-xetex
 install:
   - pip install wrc
 script:
-  - wrc . --target=check
+  - mkdir build
+  - wrc . --target=html
+  - wrc . --target=pdf
